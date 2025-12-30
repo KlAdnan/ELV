@@ -61,3 +61,224 @@ Switch(config-if-range)# switchport access vlan 10
 2. **Step 2: Define the VLAN** - Create VLAN with ID and name
 3. **Step 3: Assign Ports to VLAN** - Configure which physical ports belong to the VLAN
 4. **Step 4: Verify Configuration** - Check VLAN status with `show vlan brief`
+
+---
+
+# NVR: Network Video Recorder Setup Guide
+
+## What is an NVR?
+
+A Network Video Recorder (NVR) is a specialized computer system that records video from IP cameras to a hard disk drive (HDD). Unlike DVRs that process video at the recorder, NVRs work with IP cameras that encode and process video at the camera level, then stream it to the NVR for storage and viewing.
+
+📄 **[Complete Setup Guide - Download PDF](NVR_Setup_Box_to_Live_View.pdf)**
+
+## Dahua NVR Setup: From Box to Live View
+
+### Hardware Installation
+
+#### Step 1: Install Hard Drive
+- Open the NVR chassis
+- Mount surveillance-grade HDD (check max capacity: 10TB for 4116, varies for 4216)
+- Connect SATA and power cables
+- **Pro Tip**: Use surveillance-grade drives optimized for 24/7 recording
+
+#### Step 2: Make Physical Connections
+- **Mouse**: Connect USB mouse (front or rear port)
+- **Network (LAN)**: Connect to router/switch via Ethernet cable (CRITICAL for remote viewing)
+- **Power**: Connect power supply (external 48V for 4116, built-in for 4216)
+- **Monitor**: Connect via HDMI or VGA (can use both simultaneously)
+- **PoE Camera Ports**: Plug cameras directly for auto-detection and power
+
+### Network Architecture Options
+
+| Scenario | Setup | Use Case |
+|----------|-------|----------|
+| **A: Standalone** | Cameras → NVR PoE ports only | Local monitor viewing, no network needed |
+| **B: Expanded Local** | Cameras → PoE Switch ← NVR | More cameras than NVR ports, PC access on LAN |
+| **C: Full Remote** | Cameras → PoE Switch → Router → Internet | Remote viewing from anywhere via phone/web |
+
+### Network Configuration Essentials
+
+**Understanding Your Network Address**:
+- **IP Address**: Unique device address (e.g., 192.168.1.108)
+- **Subnet Mask**: Network range definition (typically 255.255.255.0)
+- **Default Gateway**: Router IP for internet access (e.g., 192.168.1.1)
+
+### Initial Setup Wizard
+
+**Step 1**: Region & Language Selection
+**Step 2**: Set Strong Admin Password (8-32 characters)
+**Step 3**: Create Unlock Pattern (optional)
+**Step 4**: CRITICAL - Set Recovery Email (only way to reset password)
+**Step 5**: Device Name & Enable NTP for auto time sync
+
+### Static vs DHCP IP Configuration
+
+✅ **Static IP (Recommended)**:
+- IP address never changes
+- Reliable remote access
+- Example: 192.168.8.253
+- Always click "Test" to verify availability
+
+⚠️ **DHCP (Not Recommended)**:
+- IP can change on reboot
+- Breaks remote access connections
+- Only use for temporary setups
+
+### Enable P2P for Easy Remote Access
+
+**What is P2P?**: Peer-to-Peer service allows mobile app to find your NVR without complex port forwarding
+
+**Setup**:
+1. Enable P2P in setup wizard
+2. Verify status shows "Online"
+3. Use QR code to add device to mobile app
+4. ⚠️ **Keep QR code and serial number private!**
+
+### Camera Registration
+
+**Automatic Detection**:
+- Cameras plugged into NVR PoE ports auto-detect
+- NVR uses its admin password to login
+
+**Manual Addition**:
+- NVR scans network for Dahua cameras
+- Manually add via Camera menu
+- If status shows error, verify camera password matches
+
+### Recording Schedule Configuration
+
+**Storage Settings**:
+- Set to "Overwrite" mode (auto-deletes oldest footage when full)
+- Avoid "Stop Record" (halts all recording when drive full)
+
+**Schedule Options**:
+- **Regular (Green)**: 24/7 continuous recording
+- **MD (Yellow)**: Motion Detection only (saves space)
+
+**Recommended Setup for Space Saving**:
+1. Remove default Regular schedule
+2. Enable MD (Motion Detection)
+3. Fill entire schedule with MD
+4. Use "Copy" to apply to all channels
+
+### Mobile App Setup (gDMSS/iDMSS)
+
+1. Download **gDMSS Plus** (Android) or **iDMSS Plus** (iOS)
+2. Open app → Add device
+3. Select **SNScan**
+4. Scan **Device SN QR code** from NVR monitor (Network → P2P)
+5. Start Live View
+
+### Video Streams Explained
+
+| Stream Type | Resolution | Bitrate | Use Case |
+|-------------|------------|---------|----------|
+| **Main Stream** | Full (1920x1080+) | High | Recording to HDD |
+| **Sub Stream** | Lower (D1) | Low | Mobile/remote viewing (less bandwidth) |
+
+**Configuration**: Camera → Encode settings
+
+### PC Access Methods
+
+**Method 1: Web Browser**
+- Type NVR IP in browser: `http://192.168.8.253`
+- Access: Live view, playback, configuration
+
+**Method 2: Smart PSS Software**
+- Download from Dahua website (Windows/macOS)
+- Centralized management for multiple NVRs
+- Advanced features and controls
+
+---
+
+# SIRA/ADMCC: UAE Security Camera Requirements (C025 Standards)
+
+## Overview
+
+Compliant with **SIRA** (Dubai) and **MCC/ADMCC** (Abu Dhabi) regulations introduced in **Administrative Resolution No. (13) April 2025**.
+
+## SIRA CCTV Network Isolation (VLAN 100)
+
+### Step 1: Configure Isolated VLAN
+
+```
+Switch(config)# vlan 100
+Switch(config-vlan)# name SIRA_CCTV_NETWORK
+Switch(config-vlan)# exit
+Switch(config)#
+```
+
+### Step 2: Assign Camera & NVR Ports to VLAN 100
+
+```
+Switch(config)# interface range gigabitethernet1/0/1 - 24
+Switch(config-if-range)# switchport mode access
+Switch(config-if-range)# switchport access vlan 100
+Switch(config-if-range)# spanning-tree portfast
+Switch(config-if-range)# exit
+```
+
+**Note**: Ports 1-24 are Layer 3 switch ports for cameras and NVR isolation
+
+### Step 3: Save Configuration
+
+```
+Switch(config-SW01)# exit
+SIRA-CCTV-SW01# write memory
+SIRA-CCTV-SW01# copy running-config startup-config
+```
+
+## Basic Switch Security (SIRA Best Practices)
+
+### Required Security Configurations
+
+```
+Switch(config)# hostname SIRA-CCTV-SW01
+
+SIRA-CCTV-SW01(config)# enable secret [YourVeryStrongPasswordHere]
+SIRA-CCTV-SW01(config)# username admin privilege 15 secret [Password]
+
+SIRA-CCTV-SW01(config)# ip domain-name localdomain.com
+SIRA-CCTV-SW01(config)# crypto key generate rsa modulus 2048
+
+SIRA-CCTV-SW01(config)# ip ssh version 2
+SIRA-CCTV-SW01(config)# line vty 0 4
+SIRA-CCTV-SW01(config)# transport input ssh
+
+SIRA-CCTV-SW01(config)# login local
+SIRA-CCTV-SW01(config)# exit
+```
+
+### Security Features Implemented
+
+✅ **Network Isolation**: Cameras on dedicated VLAN 100  
+✅ **Layer 3 Switch**: Proper network segmentation  
+✅ **PortFast**: Faster camera connection (bypass STP delay)  
+✅ **Strong Passwords**: Complex passwords for all access  
+✅ **SSH Only**: Encrypted remote access (disable Telnet)  
+✅ **RSA 2048**: Strong encryption keys  
+✅ **Privilege Levels**: Role-based access control  
+
+## SIRA Compliance Checklist
+
+- [ ] All cameras and NVRs on isolated VLAN (100)
+- [ ] Layer 3 managed switch deployed
+- [ ] Strong passwords enabled on all devices
+- [ ] SSH enabled, Telnet disabled
+- [ ] Configuration saved to startup-config
+- [ ] Network diagram documented
+- [ ] Admin credentials securely stored
+- [ ] Regular firmware updates scheduled
+- [ ] Access logs monitored
+
+---
+
+## Key Takeaways
+
+✅ **ONVIF**: Universal standard for camera/NVR interoperability  
+✅ **VLANs**: Network segmentation for security and performance  
+✅ **NVR**: Complete setup from hardware to mobile viewing  
+✅ **SIRA/ADMCC**: UAE compliance with proper network isolation  
+
+**All systems properly configured and operational!**
