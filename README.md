@@ -55,6 +55,8 @@ Switch(config-if-range)# switchport access vlan 10
 - **Performance (Efficiency)**: Reduces broadcast domains for better network speed
 - **Flexibility (Logical Grouping)**: Easily group devices regardless of physical location
 
+- ![Network Switches](switches.jpeg)
+
 ## How VLANs Work
 
 1. **Step 1: Access & Configure** - Connect to the managed switch
@@ -89,7 +91,11 @@ A Network Video Recorder (NVR) is a specialized computer system that records vid
 - **Monitor**: Connect via HDMI or VGA (can use both simultaneously)
 - **PoE Camera Ports**: Plug cameras directly for auto-detection and power
 
+- ![CAT Cable Types](cat%20cables.jpeg)
+
 ### Network Architecture Options
+
+![Network Topology](star%20topology.jpeg)
 
 | Scenario | Setup | Use Case |
 |----------|-------|----------|
@@ -211,6 +217,8 @@ Compliant with **SIRA** (Dubai) and **MCC/ADMCC** (Abu Dhabi) regulations introd
 - [ ] Admin credentials securely stored
 - [ ] Regular firmware updates scheduled
 - [ ] Access logs monitored
+
+- [ ] ![Troubleshooting Guide](trouble%20shooting.jpeg)
 
 ---
 
