@@ -196,6 +196,8 @@ A Network Video Recorder (NVR) is a specialized computer system that records vid
 
 ## Overview
 
+![SIRA UAE Security Camera Requirements](sira.png)
+
 Compliant with **SIRA** (Dubai) and **MCC/ADMCC** (Abu Dhabi) regulations introduced in **Administrative Resolution No. (13) April 2025**.
 
 ## SIRA CCTV Network Isolation (VLAN 100)
