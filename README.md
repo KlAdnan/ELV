@@ -27,7 +27,7 @@ Creating Logical Segmentation on a Shared Physical Infrastructure
 
 A VLAN (Virtual Local Area Network) allows you to logically divide a single physical switch into multiple broadcast domains. This means devices on different VLANs cannot communicate directly, even though they're connected to the same switch - providing security, performance, and flexibility benefits.
 
-![VLAN Overview](VLAN.jpeg)
+![VLAN Overview](vlan 2.png)
 
 ## VLAN Configuration Example
 
