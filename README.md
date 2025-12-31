@@ -229,4 +229,58 @@ Compliant with **SIRA** (Dubai) and **MCC/ADMCC** (Abu Dhabi) regulations introd
 ✅ **NVR**: Complete setup from hardware to mobile viewing  
 ✅ **SIRA/ADMCC**: UAE compliance with proper network isolation  
 
-**All systems properly configured and operational!**
+**All systems prope
+
+---
+
+# ICT Cabling: Structured Network Infrastructure
+
+Physical Foundation for Data, Voice, CCTV & Access Control Systems
+
+![ICT Cabling](ict.png)
+
+## ICT Cabling Quick Reference
+
+| Section | Topic | Simple Notes |
+|---------|-------|-------------|
+| 1 | ICT cabling role | Physical network for data, voice, CCTV, access control. |
+| 1 | Standards focus | Use Cat6A copper and structured fiber as 2025 base. |
+| 2 | Entrance facility | Point where service provider links enter building. |
+| 2 | MDF room | Main rack with core switch, router, and backbone links. |
+| 2 | TR/IDF room | Floor-wise rack distributing to work areas. |
+| 2 | Horizontal cabling | Cat6A runs from TR to outlets, max 90 m. |
+| 3 | Copper links | Use for data ports, Wi‑Fi APs, many CCTV. |
+| 3 | Fiber links | Use for long distance, inter‑rack and backbone. |
+| 4 | Core roles | Structured cabling technician, data‑cabling engineer, ELV/ICT engineer. |
+| 4 | Certifications | BICSI Installer 2, Technician (TECH), then advanced RCDD. |
+| 4 | Responsibilities | Install and terminate Cat6A/fiber, test, troubleshoot, build racks. |
+| 5 | Future sectors | 5G sites, smart buildings, data centers, IoT/surveillance in UAE. |
+
+## Key Infrastructure Components
+
+### Physical Spaces
+- **Entrance Facility (EF)**: Service provider demarcation point
+- **Main Distribution Frame (MDF)**: Central hub with core networking equipment
+- **Telecom Room (TR/IDF)**: Floor distribution points for horizontal cabling
+- **Work Area**: End-user connection points (desks, cameras, APs)
+
+### Cabling Standards
+- **Horizontal**: Cat6A (up to 90m) for desktop/device connections
+- **Backbone**: Fiber optic for inter-floor and building connections
+- **Max Distance**: 90m permanent + 10m patch cords = 100m total
+
+### Professional Roles
+- **Cabling Technician**: Install, terminate, and test copper/fiber infrastructure
+- **ELV Engineer**: Design and supervise low-voltage systems integration
+- **BICSI RCDD**: Senior designer for complex data center and campus networks
+
+### UAE Application Sectors
+✅ 5G telecom sites and tower infrastructure  
+✅ Smart building automation and BMS integration  
+✅ Data centers with high-density fiber backbones  
+✅ IoT sensor networks and surveillance systems  
+✅ Campus and enterprise structured cabling
+
+---
+
+**Complete ELV/ICT documentation ready for deployment!**rly configured and operational!**
