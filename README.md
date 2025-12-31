@@ -284,3 +284,99 @@ Physical Foundation for Data, Voice, CCTV & Access Control Systems
 ---
 
 **Complete ELV/ICT documentation ready for deployment!**rly configured and operational!**
+
+---
+
+# PoE: Power over Ethernet Technology
+
+Delivering Power and Data Through a Single Cable
+
+![PoE Extender](poe%20extender.png)
+
+## PoE Quick Reference
+
+| Category | Topic | Simple Notes |
+|----------|-------|-------------|
+| 1 | PoE purpose | Deliver DC power and data over single Ethernet cable. |
+| 1 | Main benefit | Eliminate need for separate power cables and outlets. |
+| 2 | PoE standards | IEEE 802.3af (PoE), 802.3at (PoE+), 802.3bt (PoE++/4PPoE). |
+| 2 | Power levels | af: 15.4W, at: 30W, bt Type3: 60W, bt Type4: 100W. |
+| 3 | Common devices | IP cameras, VoIP phones, Wi-Fi APs, IoT sensors, door locks. |
+| 3 | PSE equipment | PoE switches, PoE injectors (midspan), network adapters. |
+| 4 | Cable requirement | Cat5e minimum, Cat6/Cat6A recommended for higher power. |
+| 4 | Max distance | 100m (328 feet) for standard PoE over copper. |
+| 5 | PoE extenders | Extend range beyond 100m by regenerating power and signal. |
+| 5 | Use case | Long-distance camera runs, remote sensor networks, outdoor APs. |
+
+## PoE Standards Breakdown
+
+### IEEE 802.3af (PoE)
+- **Power**: 15.4W at PSE, 12.95W at device
+- **Typical devices**: Basic IP cameras, VoIP phones, simple sensors
+- **Voltage**: 44-57V DC
+
+### IEEE 802.3at (PoE+)
+- **Power**: 30W at PSE, 25.5W at device
+- **Typical devices**: PTZ cameras, dual-radio Wi-Fi APs, video phones
+- **Voltage**: 50-57V DC
+
+### IEEE 802.3bt (PoE++ / 4PPoE)
+- **Type 3**: 60W at PSE, 51W at device
+- **Type 4**: 100W at PSE, 71W at device
+- **Typical devices**: High-power PTZ, LED lighting, thin clients, displays
+- **Voltage**: 50-57V DC
+
+## PoE System Components
+
+### Power Sourcing Equipment (PSE)
+- **PoE Switch**: Integrated PoE ports that supply power and data
+- **PoE Injector (Midspan)**: Adds PoE capability to non-PoE switches
+- **PoE NVR**: Network video recorders with built-in PoE ports
+
+### Powered Devices (PD)
+- **IP Security Cameras**: Most common PoE application
+- **Wireless Access Points**: Ceiling-mounted Wi-Fi without power outlets
+- **VoIP Phones**: Desktop IP phones powered via network
+- **Access Control**: Door locks, card readers, intercoms
+- **IoT Sensors**: Temperature, motion, environmental monitoring
+
+## PoE Extenders Explained
+
+### What is a PoE Extender?
+A device that receives PoE power and data, then regenerates both to extend the network beyond the standard 100m Ethernet limit.
+
+### Key Features
+- **Input**: PoE from PSE (switch/injector)
+- **Output**: Regenerated PoE to powered device
+- **Extension**: Adds another 100m per extender (can be daisy-chained)
+- **Transparent**: No configuration needed, plug-and-play
+
+### Common Applications
+- **Parking lot cameras**: Long runs from building to perimeter
+- **Outdoor Wi-Fi**: Remote access points in parks or campuses
+- **Elevator cameras**: Vertical runs through buildings
+- **Agricultural IoT**: Sensors in large farms or greenhouses
+
+## PoE Planning Guidelines
+
+### Power Budget Calculation
+1. List all PoE devices and their power requirements
+2. Add 20% overhead for cable loss
+3. Verify switch total PoE budget supports all devices
+4. Example: 16-port switch with 120W budget = avg 7.5W per port
+
+### Cable Selection
+- **Cat5e**: Good for PoE (802.3af) up to 100m
+- **Cat6/Cat6A**: Required for PoE+ and PoE++ at full distance
+- **Quality matters**: Poor cables cause voltage drop and unreliable power
+
+### Installation Best Practices
+✅ Label all PoE ports clearly on switches  
+✅ Use cable tester to verify all 8 conductors before deployment  
+✅ Document power consumption per port for troubleshooting  
+✅ Keep firmware updated on PoE switches for power management  
+✅ Plan for future power needs (cameras may upgrade to PTZ)
+
+---
+
+**Complete PoE infrastructure guide for efficient power delivery!**
